@@ -1,0 +1,21 @@
+git update-git-for-windows 升级原有的老版本git到最新版本
+git config --list 查看git的配置内容
+git config --global user.name  修改个人信息，包括name和email即可
+git init 创建本地仓库
+git add 文件名称.后缀名 添加文件到暂存区
+git commit -m "添加提交备注信息" 将暂存区的内容提交至本地仓库
+git status 检查暂存区是否存有内容待操作，或者内容是否有变动
+git restore -- 文件名称.后缀名 撤销本次的操作行为
+git log 可以用于查看历史提交记录，所有的备注信息也会显示在记录之中，可以添加参数--pretty=oneline 只显示一行信息
+git reset --hard HEAD^ 将当前内容回退至上一个版本，也可以不输入HEAD^，直接输入版本号选择指定的版本回退
+git reflog 获取每一个版本号信息的相关日志
+git remote add origin 远程仓库url 链接到指定的远程仓库，远程仓库基于url来进行定位，基于ssh进行链接
+git push -u origin master 将本地仓库内容直接提交至远程仓库
+git push origin master 将本地仓库新增的内容提交至远程仓库
+git clone 远程仓库url 从指定远程仓库下载内容到本地仓库
+
+git checkout -b 分支名 创建并切换至新的分支
+git branch 查看所有分支，并以*显示当先使用的分支
+git checkout 分支名 切换至指定的分支
+git merge 分支名 合并指定的分支
+git branch -d 分支名 删除指定分支
