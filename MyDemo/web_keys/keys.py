@@ -62,8 +62,23 @@ def open_browser(type_):
 
 
 class Keys:
-    # 创建临时driver
-    # driver = webdriver.Chrome()
+    '''
+    Keys() 调用这个类会进入构造函数，创建driver，以便实例方法使用，并且在构造函数中设置隐式等待整个driver的生命周期均有效
+    其中包含的工具方法有：
+        open(self, txt)：访问url
+        locate(self, name, value)：定位元素
+        click(self, name, value)：点击操作
+        input(self, name, value, txt)：输入
+        quit(self)：退出driver
+        web_el_wait(self, name, value)：显示等待（针对元素的等待方法）
+        wait(self, txt)：强制等待
+        switch_frame(self, value, name=None)：切换frame
+        switch_default(self)：切换至默认frame
+        locator_with(self, method, value, el_name, el_value, direction)：相对定位器
+        switch_handle(self, close=False, index=1)：句柄的切换（考虑不同场景的不同切换）
+        assert_text(self, name, value, expect)：断言校验
+
+    '''
 
     # 构造函数
     def __init__(self, txt):
@@ -114,7 +129,6 @@ class Keys:
         #     except NoSuchElementException:
         #         self.driver.switch_to.frame(self.locate(name, value))
 
-        # 这是QBoy的简化思路。棒棒哒~~~~~~~~~
         if name is None:
             self.driver.switch_to.frame(value)
         else:
