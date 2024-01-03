@@ -3,7 +3,7 @@
     调用关键字驱动类实现自动化效果
     一个py文件，管理一个测试用例。
 '''
-from CMVIP05.class07_web_Keys.web_keys.keys import Keys
+from class07_web_Keys.web_keys.keys import Keys
 
 # 百度搜索业务流程
 key = Keys('Firefox')

@@ -29,7 +29,7 @@ class ChromeOptions:
         options.add_argument(r'--user-data-dir=C:\Users\xuzhu\AppData\Local\Google\Chrome\User Data')
         # 去掉账号密码弹窗
         prefs = {}
-        prefs["credentials-enable-service"] = False
+        prefs["credentials_enable_service"] = False
         prefs['profile.password_manager_enable'] = False
         options.add_experimental_option("prefs", prefs)
 

@@ -27,4 +27,4 @@ el = driver.find_element('xpath', '//input[@id="kw"]')
 # print(div)
 # 靠近
 span = driver.find_element(locate_with(By.TAG_NAME, 'span').near(el))
-print(span)
+print(span.get_attribute('class'))

@@ -1,0 +1,15 @@
+# &锚点。 相当于定义一个变量叫做defaults。在后续内容中可以直接引用
+key: &defaults
+  name: xuzhu
+  age: 14
+
+key1: &key
+  name: 十
+  age: 81
+# <<表示合并到当前数据，*表示引用，引用的对象是锚点
+info:
+  sexual: 男
+  <<: *defaults
+
+info1:
+  <<: *key

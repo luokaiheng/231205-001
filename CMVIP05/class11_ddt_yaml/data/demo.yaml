@@ -1,0 +1,14 @@
+-
+  demo: &demo
+    a: 123
+    b: xxx
+-
+  demo1: &demo1
+    c: 123123
+    d: zxczcx
+
+-
+  ddd:
+    <<: *demo
+    <<: *demo1
+    name: zxczxczxc
