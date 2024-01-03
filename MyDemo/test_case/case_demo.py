@@ -9,6 +9,12 @@ from MyDemo.web_keys.keys import Keys
 key = Keys('Chrome')
 key.open('http://www.baidu.com')
 key.input('id', 'kw', '虚竹')
+
 key.click('id', 'su')
+# 相对定位器定位搜索按钮
+# el = key.locator_with('css selector', '#su', 'id', 'kw', 'right')
+# print(el)
+# el.click()
+print('点击成功')
 key.wait(5)
 key.quit()

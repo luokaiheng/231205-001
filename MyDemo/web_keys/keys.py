@@ -24,6 +24,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from MyDemo.test_config.chrome_options import ChromeOptions
 
+
 # 基于type_值决定生成的driver对象是什么类型
 def open_browser(type_):
     if type_ == 'Chrome':
@@ -162,13 +163,15 @@ class Keys:
                 "class name": By.CLASS_NAME,
                 "css selector": By.CSS_SELECTOR
             }
-            return self.driver.locate(getattr(
+            return self.driver.find_element(getattr(
                 locate_with(method_dict.get(method), value), direction_dict.get(direction))(el))
-                # method_dict.get(method):BY的定位方法，value:获取定位方法的值，direction_dict.get(direction):判断相对定位的方法
-                # getattr(类,属性)
-                # 相当于 类.属性 的意思 self.locate(locate_with(method_dict.get(method), value).direction_dict.get(direction))(el)
-                #                      ↓              ↓          ↓                     ↓           ↓                         ↓
-                #                   self.locate(locate_with(By.TAG_NAME,             'input').  to_left_of                 (el))
+            '''
+                method_dict.get(method):BY的定位方法，value:获取定位方法的值，direction_dict.get(direction):判断相对定位的方法
+                getattr(类,属性)
+                相当于 类.属性 的意思 self.locate(locate_with(method_dict.get(method), value).direction_dict.get(direction))(el)
+                                     ↓              ↓          ↓                     ↓           ↓                         ↓
+                                  self.locate(locate_with(By.TAG_NAME,             'input').  to_left_of                 (el))
+            '''
 
     # 句柄的切换（考虑不同场景的不同切换）
     def switch_handle(self, close=False, index=1):
