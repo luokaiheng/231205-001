@@ -162,18 +162,23 @@ class Keys:
                 "class name": By.CLASS_NAME,
                 "css selector": By.CSS_SELECTOR
             }
-            self.locate(locate_with(By.TAG_NAME, 'input').to_left_of(el))
-            return self.driver.find_element(getattr(
+            return self.driver.locate(getattr(
                 locate_with(method_dict.get(method), value), direction_dict.get(direction))(el))
+                # method_dict.get(method):BY的定位方法，value:获取定位方法的值，direction_dict.get(direction):判断相对定位的方法
+                # getattr(类,属性)
+                # 相当于 类.属性 的意思 self.locate(locate_with(method_dict.get(method), value).direction_dict.get(direction))(el)
+                #                      ↓              ↓          ↓                     ↓           ↓                         ↓
+                #                   self.locate(locate_with(By.TAG_NAME,             'input').  to_left_of                 (el))
 
     # 句柄的切换（考虑不同场景的不同切换）
     def switch_handle(self, close=False, index=1):
         handles = self.driver.window_handles
         if close:
+            # 是否关闭当前页再进行句柄切换
             self.driver.close()
         self.driver.switch_to.window(handles[index])
 
-    # 句柄切换2
+    # 句柄切换2，不做任何关闭
     # def switch_handle_1(self, index):
     #     handles = self.driver.window_handles
     #     self.driver.switch_to.window(handles[index])
