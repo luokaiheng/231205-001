@@ -188,6 +188,7 @@ class Keys:
 
     # 断言文本信息：可以捕获异常进行处理，也可以不捕获，因为报错就相当于断言失败。
     def assert_text(self, name, value, expect):
+        # 根据返回的true 或者 False进行对应的用例结果操作
         try:
             reality = self.locate(name, value).text
             assert expect == reality, '断言失败，实际结果为：{}'.format(reality)
