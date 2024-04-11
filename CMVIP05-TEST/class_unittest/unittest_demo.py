@@ -9,6 +9,7 @@
 '''
 import unittest
 
+
 class TestDemo(unittest.TestCase):
     def test_01_Login(self):
         print('点击登录按钮')
@@ -16,7 +17,11 @@ class TestDemo(unittest.TestCase):
     def test_02_Buy(self):
         print('点击购买按钮')
 
+    def test_03_cancel(self):
+        print('点击取消按钮')
 
+    def test_04_exit(self):
+        print('点击退出按钮')
 
 
 if __name__ == '__main__':
