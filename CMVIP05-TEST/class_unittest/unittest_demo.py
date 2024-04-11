@@ -11,6 +11,21 @@ import unittest
 
 
 class TestDemo(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        print('====读取账号密码')
+
+    @classmethod
+    def tearDownClass(cls):
+        print('====封锁账号密码')
+
+    def setUp(self):
+        print('----准备操作')
+
+    def tearDown(self):
+        print('----查看页面')
+
     def test_01_Login(self):
         print('点击登录按钮')
 
