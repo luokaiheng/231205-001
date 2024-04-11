@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+'''
+@author: Loeb{luokaiheng}
+@file: keys.py
+@time: 2024/4/11  23:07
+@software: PyCharm
+@desc:
+'''
 '''
     工具类：结构中层级属于底层逻辑代码层级
     Selenium关键字驱动类：常用操作行为给封装为各类关键字。
@@ -22,13 +31,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.relative_locator import locate_with
 from selenium.webdriver.support.wait import WebDriverWait
 
-from CMVIP05.class06_options_web.chrome_options import ChromeOptions
+from MyDemo.test_config.chrome_options import ChromeOptions
 
 
 # 基于type_值决定生成的driver对象是什么类型
 def open_browser(type_):
     if type_ == 'Chrome':
-        driver = webdriver.Chrome(options=ChromeOptions().options())
+        # driver = webdriver.Chrome(options=ChromeOptions().options())
+        driver = webdriver.Chrome()
     else:
         try:
             driver = getattr(webdriver, type_)()
@@ -57,22 +67,38 @@ def open_browser(type_):
                 driver = webdriver.Ie()   
             elif safari
             elif edge
-        
+
 '''
 
 
 class Keys:
-    # 创建临时driver
-    # driver = webdriver.Chrome()
+    '''
+    Keys() 调用这个类会进入构造函数，创建driver，以便实例方法使用，并且在构造函数中设置隐式等待整个driver的生命周期均有效
+    其中包含的工具方法有：
+        open(self, txt)：访问url
+        locate(self, name, value)：定位元素
+        click(self, name, value)：点击操作
+        input(self, name, value, txt)：输入
+        quit(self)：退出driver
+        web_el_wait(self, name, value)：显示等待（针对元素的等待方法）
+        wait(self, txt)：强制等待
+        switch_frame(self, value, name=None)：切换frame
+        switch_default(self)：切换至默认frame
+        locator_with(self, method, value, el_name, el_value, direction)：相对定位器
+        switch_handle(self, close=False, index=1)：句柄的切换（考虑不同场景的不同切换）
+        assert_text(self, name, value, expect)：断言校验
+
+    '''
 
     # 构造函数
-    def __init__(self, type_):
-        self.driver = open_browser(type_)
+    def __init__(self, txt):
+        self.driver = open_browser(txt)
+        # 隐式等待（全局设置
         self.driver.implicitly_wait(10)
 
     # 访问url
-    def open(self, url):
-        self.driver.get(url)
+    def open(self, txt):
+        self.driver.get(txt)
 
     # 定位元素
     def locate(self, name, value):
@@ -96,8 +122,8 @@ class Keys:
             lambda el: self.locate(name, value), message='元素查找失败')
 
     # 强制等待
-    def wait(self, time_):
-        sleep(int(time_))
+    def wait(self, txt):
+        sleep(txt)
 
     # 切换Iframe
     '''
@@ -113,7 +139,6 @@ class Keys:
         #     except NoSuchElementException:
         #         self.driver.switch_to.frame(self.locate(name, value))
 
-        # 这是QBoy的简化思路。棒棒哒~~~~~~~~~
         if name is None:
             self.driver.switch_to.frame(value)
         else:
@@ -147,24 +172,32 @@ class Keys:
                 "class name": By.CLASS_NAME,
                 "css selector": By.CSS_SELECTOR
             }
-            self.locate(locate_with(By.TAG_NAME, 'input').to_left_of(el))
             return self.driver.find_element(getattr(
                 locate_with(method_dict.get(method), value), direction_dict.get(direction))(el))
+            '''
+                method_dict.get(method):BY的定位方法，value:获取定位方法的值，direction_dict.get(direction):判断相对定位的方法
+                getattr(类,属性)
+                相当于 类.属性 的意思 self.locate(locate_with(method_dict.get(method), value).direction_dict.get(direction))(el)
+                                     ↓              ↓          ↓                     ↓           ↓                         ↓
+                                  self.locate(locate_with(By.TAG_NAME,             'input').  to_left_of                 (el))
+            '''
 
     # 句柄的切换（考虑不同场景的不同切换）
     def switch_handle(self, close=False, index=1):
         handles = self.driver.window_handles
         if close:
+            # 是否关闭当前页再进行句柄切换
             self.driver.close()
         self.driver.switch_to.window(handles[index])
 
-    # 句柄切换2
+    # 句柄切换2，不做任何关闭
     # def switch_handle_1(self, index):
     #     handles = self.driver.window_handles
     #     self.driver.switch_to.window(handles[index])
 
     # 断言文本信息：可以捕获异常进行处理，也可以不捕获，因为报错就相当于断言失败。
     def assert_text(self, name, value, expect):
+        # 根据返回的true 或者 False进行对应的用例结果操作
         try:
             reality = self.locate(name, value).text
             assert expect == reality, '断言失败，实际结果为：{}'.format(reality)
@@ -174,7 +207,7 @@ class Keys:
             return False
         # reality = self.locate(name, value).text
         # assert expect == reality, '断言失败，实际结果为：{}'.format(reality)
-
-    # 获取指定元素的文本
-    def get_text(self, name, value):
-        return self.locate(name, value).text
+# if __name__ == '__main__':
+# Keys().switch_frame('id', 'su')
+# Keys().switch_frame('su')
+# Keys().switch_frame_simple('id', 'su')

@@ -45,5 +45,19 @@ class TestDemo(unittest.TestCase):
         print('点击退出按钮')
 
 
+class TestDemo01(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        print('====读取账号密码')
+
+    @classmethod
+    def tearDownClass(cls):
+        print('====封锁账号密码')
+
+    def test_11_checkaccount(self):
+        print('查看账户余额')
+
+
 if __name__ == '__main__':
     unittest.main
