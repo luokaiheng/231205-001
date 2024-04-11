@@ -14,7 +14,7 @@
 '''
 import unittest
 
-from class07_web_Keys.web_keys.keys import Keys
+from CMVIP05.class07_web_Keys.web_keys.keys import Keys
 
 
 class TestCase(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCase(unittest.TestCase):
 
     # 实现登录操作流程
     def test_01_login(self):
-        self.key.open('http://39.98.138.157/shopxo/index.php')
+        self.key.open('http://shop-xo.hctestedu.com')
         self.key.click('link text', '登录')
         self.key.input('name', 'accounts', 'xuzhu666')
         self.key.input('name', 'pwd', '123456')
@@ -49,7 +49,7 @@ class TestCase(unittest.TestCase):
     # 实现商品搜索流程
     def test_02_search(self):
         # self.key.wait(10)
-        self.key.open('http://39.98.138.157/shopxo/index.php')
+        self.key.open('http://shop-xo.hctestedu.com')
         self.key.input('name', 'wd', '手机')
         self.key.click('id', 'ai-topsearch')
         self.key.wait(3)
