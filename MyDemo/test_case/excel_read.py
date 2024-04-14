@@ -62,6 +62,7 @@ def read(file):
                 if values[1] == 'open_browser':
                     # driver = Keys(values['txt'])
                     keys = Keys(**data)
+                # 断言操作
                 elif 'assert' in values[1]:
                     status = getattr(keys, values[1])(**data)
                     if status:
