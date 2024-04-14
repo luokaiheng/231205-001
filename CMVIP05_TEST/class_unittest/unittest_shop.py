@@ -25,7 +25,7 @@ class TestCase_01(unittest.TestCase):
     def test_00_register(self):
         self.key.open("http://shop-xo.hctestedu.com")
         self.key.click('link text', '注册')
-        self.key.input('name', 'accounts', 'xuzhu6666')
+        self.key.input('name', 'accounts', 'xuzhu66666')
         self.key.input('name', 'pwd', '123456')
         self.key.click('xpath', '//button[text()="注册"]')
         self.key.wait(3)
@@ -39,7 +39,7 @@ class TestCase_01(unittest.TestCase):
         # 实现登录操作，访问地址，定位控件，输入内容，点击登录，最后做断言
         self.key.open("http://shop-xo.hctestedu.com")
         self.key.click('link text', '登录')
-        self.key.input('name', 'accounts', 'xuzhu6666')
+        self.key.input('name', 'accounts', 'xuzhu66666')
         self.key.input('name', 'pwd', '123456')
         self.key.click('xpath', '//button[text()="登录"]')
         self.key.wait(3)
