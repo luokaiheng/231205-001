@@ -34,5 +34,5 @@ path = "./"
 discover = unittest.defaultTestLoader.discover(start_dir=path,pattern='test*.py')
 
 # 运行套件内的测试用例,默认运行器,verbosity是日志等级:0-1
-runner = unittest.TextTestRunner(verbosity=2)
+runner = unittest.TextTestRunner(verbosity=1)
 runner.run(discover)
