@@ -15,6 +15,7 @@ class TestCase_01(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # 在执行用例前，做初始化准备
+        # 这里是类对象,所以是cls
         cls.key = Keys('Chrome')
 
     @classmethod
@@ -43,12 +44,13 @@ class TestCase_01(unittest.TestCase):
         self.key.input('name', 'pwd', '123456')
         self.key.click('xpath', '//button[text()="登录"]')
         self.key.wait(3)
+        # # 写法1：因为assert_text中把错误异常都处理掉了，所以需要一个status去接收这个用例的状态，在根据status的状态去对应做操作或判断
         # status = self.key.assert_text('link text', '退出', '退出1')
         # self.assertTrue(status, msg='断言失败，{}不为True'.format(status))
+        # 写法2:unittest中自带的断言方式,直接进行断言,通过判断两个值是否相等,来进行断言,失败就报错
         self.assertEqual(first='退出',
                          second=self.key.get_text('link text', '退出'),
                          msg='断言失败')
-        self.key.click('link text', '退出')
 
     def test_02_seach(self):
         # 实现查询效果，定位控件，输入内容，点击搜索
