@@ -1,0 +1,8 @@
+# 字典嵌套
+key1:
+ key1.1: value1.1
+ key1.2:
+  key1.2.1: value1.2.1
+  key1.2.2: value1.2.2
+ key1.3:
+key2: value2

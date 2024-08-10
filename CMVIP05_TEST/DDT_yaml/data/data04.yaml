@@ -1,0 +1,10 @@
+# list+dict
+-
+ key1: value
+ key1.1: value
+ key1.2:
+  key1.2.1: value
+-
+  key2: value
+  key3:
+    key3.1: value3.1
