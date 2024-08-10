@@ -20,6 +20,9 @@ import unittest
 from ddt import ddt, data, unpack
 
 
+def read_file():
+
+
 # ddt后面不要接括号
 @ddt
 class Demo(unittest.TestCase):
@@ -58,6 +61,9 @@ class Demo(unittest.TestCase):
     def test_04(self, name, type_, type_001='None'):
         print('如果当测试用例中，需要传入多组形参数据，可以通过声明unpack装饰器来对数据组进行拆包')
         print(name + ' ' + type_ + ' ' + type_001)
+
+
+
 
 
 if __name__ == '__main__':
