@@ -49,7 +49,7 @@ class Read_Yaml():
             data = yaml.load(stream=file, Loader=yaml.FullLoader)
             print('\n' + name + '文件下存储的数据：')
             print(data)
-        print('读取数据结束！')
+        print('\n' + '读取数据结束！')
 
 
 class Write_Yaml():

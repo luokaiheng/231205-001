@@ -1,0 +1,22 @@
+-
+  url: http://shop-xo.hctestedu.com
+  login:
+    name: link text
+    value: 登录
+  accounts:
+    name: name
+    value: accounts
+    txt: xuzhu666
+  password:
+    name: name
+    value: pwd
+    txt: '123456'
+  button:
+    name: xpath
+    value: //button[text()="登录"]
+  time_: 3
+  assert_text:
+    reality:
+      name: link text
+      value: 退出
+    expect: 退出
