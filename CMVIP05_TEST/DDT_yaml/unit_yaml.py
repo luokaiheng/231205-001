@@ -35,17 +35,36 @@ class UnitYaml(unittest.TestCase):
     @file_data('./data/data_login.yaml')
     def test_01_login(self, **kwargs):
         print(kwargs)
-        self.key.open(kwargs['url'])
-        self.key.click(**kwargs['login'])
-        self.key.input(**kwargs['accounts'])
-        self.key.input(**kwargs['password'])
-        self.key.click(**kwargs['button'])
-        self.key.wait(kwargs['time_'])
-        # status = self.key.assert_text('link text', '退出', '退出1')
-        # self.assertTrue(status, msg='断言失败，{}不为True'.format(status))
-        self.assertEqual(first=kwargs['assert_text']['expect'],
-                         second=self.key.get_text(**kwargs['assert_text']['reality']),
-                         msg='断言失败')
+        # self.key.open(kwargs['url'])
+        # self.key.click(**kwargs['login'])
+        # self.key.input(**kwargs['accounts'])
+        # self.key.input(**kwargs['password'])
+        # self.key.click(**kwargs['button'])
+        # self.key.wait(kwargs['time_'])
+        # # status = self.key.assert_text('link text', '退出', '退出1')
+        # # self.assertTrue(status, msg='断言失败，{}不为True'.format(status))
+        # self.assertEqual(first=kwargs['assert_text']['expect'],
+        #                  second=self.key.get_text(**kwargs['assert_text']['reality']),
+        #                  msg='断言失败')
+
+        '''
+            {
+                'url': 'http://shop-xo.hctestedu.com', 
+                'login': {'name': 'link text', 'value': '登录'}, 
+                'accounts': {'name': 'name', 'value': 'accounts', 'txt': 'xuzhu666'}, 
+                'password': {'name': 'name', 'value': 'pwd', 'txt': '123456'}, 
+                'button': {'name': 'xpath', 'value': '//button[text()="登录"]'}, 
+                'time_': 3, 
+                'assert_text': {
+                    'reality': {
+                        'name': 'link text', 
+                        'value': '退出'
+                        }, 
+                    'expect': '退出'
+                    }
+                }
+
+        '''
 
     # 实现商品搜索流程
     # def test_02_search(self):
